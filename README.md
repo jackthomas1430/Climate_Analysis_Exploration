@@ -42,12 +42,11 @@ Steps:
 
 ## Files
 - 'sqlalchemy-challenge'(https://github.com/jackthomas1430/sqlalchemy-challenge.git) :The main repo for this challenge. 
-- 'SurfsUp': Directory containing the main flask application script 'app.py' and Jupyter Notebook 'climate_analysis.ipyn'
-    - 'app.py': Main Flask application script.
-    - 'climate_starter.ipyn'`: Jupyter Notebook containing data analysis and exploration.
 - 'Resources': Directory containing data files ('hawaii_measurements.csv','hawaii_stations.csv') 'hawaii.sqlite').
 - 'Results': Directory containing images of the results 
-
+- 'app.py': Main Flask application script.
+- 'climate_starter.ipyn'`: Jupyter Notebook containing data analysis and exploration.
+  
 ## Instructions
 1. Ensure the following have been installed:
 - Python 
