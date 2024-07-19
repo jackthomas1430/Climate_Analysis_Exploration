@@ -35,7 +35,7 @@ app = Flask(__name__)
 #################################################
 # Repeated Functions
 #################################################
-
+#Create function to calculate most recent data and one year ago 
 def get_most_recent_date_and_one_year_ago():
     """Calculate the most recent date and the date one year ago"""
     most_recent_date = session.query(Measurement.date).order_by(Measurement.date.desc()).first()[0]
@@ -57,6 +57,7 @@ def welcome():
         f"/api/v1.0/<start><br/>"
         f"/api/v1.0/<start>/<end><br/>"
     )
+#Precipitation Route 
 
 @app.route("/api/v1.0/precipitation")
 def precipitation():
@@ -78,6 +79,8 @@ def precipitation():
 
     return jsonify(precipitation_list)
 
+#Stations Route
+
 @app.route("/api/v1.0/stations")
 def stations():
     # Create our session (link) from Python to the DB
@@ -85,14 +88,16 @@ def stations():
 
     """Return a JSON list of stations from the dataset"""
     # Perform a query to retrieve the stations data
-    stations_data = session.query(Station.station,).distinct().all()
+    stations_data = session.query(Station.station).distinct().all()
 
     session.close()
 
- # Convert the query results to a list of dictionaries
+ # Convert the query results
     stations_list = list(np.ravel(stations_data))
 
     return jsonify(stations_list)
+
+#TOBS Route
 
 @app.route("/api/v1.0/tobs")
 def tobs():
@@ -108,23 +113,21 @@ def tobs():
    # Get the most recent date and the date one year ago
     most_recent_date, one_year_ago = get_most_recent_date_and_one_year_ago()
 
-
     # Perform a query to retrieve the temperature observations for the last year
     tobs_data = session.query(Measurement.date, Measurement.tobs, Station.name).\
         filter(Measurement.station == most_active_station).\
         filter(Measurement.date >= one_year_ago).\
         join(Station, Measurement.station == Station.station).all()
-    #tobs_data = session.query(Measurement.date, Measurement.tobs).\
-        #filter(Measurement.station == most_active_station).\
-        #filter(Measurement.date >= one_year_ago).all()
-    
+
     session.close()
 
-    # Convert the query results to a list of dictionaries
+    # Convert the query results 
     tobs_list = [{"station": station, "date": date, "tobs": tobs} for date, tobs, station in tobs_data]
 
     return jsonify(tobs_list)
 
+#Dynamic Route 
+#Start route + start/end route grouped together to follow DRY
 @app.route("/api/v1.0/<start>")
 @app.route("/api/v1.0/<start>/<end>")
 def temperature_stats(start, end=None):
@@ -132,7 +135,8 @@ def temperature_stats(start, end=None):
     session = Session(engine)
 
     """Return a JSON list of the minimum temperature, the average temperature, and the maximum temperature for a specified start or start-end range"""
-    # Convert the start and end dates to datetime
+    # Convert the start and end dates to datetime. 
+    #Set end date to most recent date if not specified 
     start_date = dt.datetime.strptime(start, "%Y-%m-%d")
     if end:
         end_date = dt.datetime.strptime(end, "%Y-%m-%d")
@@ -149,7 +153,7 @@ def temperature_stats(start, end=None):
 
     session.close()
 
-    # Convert the query results to a list
+    # Convert the query results 
     temperature_stats_list = [{"TMIN": min_temp, "TAVG": avg_temp, "TMAX": max_temp} 
                               for min_temp, avg_temp, max_temp in temperature_stats]
 
