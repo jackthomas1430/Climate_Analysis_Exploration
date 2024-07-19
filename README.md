@@ -41,11 +41,12 @@ Steps:
         -Returns the minimum, average, and maximum temperatures for a specified start or start-end range.
 
 ## Files
-- 'sqlalchemy-challenge'(https://github.com/jackthomas1430/sqlalchemy-challenge.git) :The main repo for this challenge. 
-- 'Resources': Directory containing data files ('hawaii_measurements.csv','hawaii_stations.csv') 'hawaii.sqlite').
-- 'Results': Directory containing images of the results 
-- 'app.py': Main Flask application script.
-- 'climate_starter.ipyn'`: Jupyter Notebook containing data analysis and exploration.
+- 'sqlalchemy-challenge'(https://github.com/jackthomas1430/sqlalchemy-challenge.git) :The main repo for this challenge.
+- 'SurfUp': Directory containing all files needed for the challenge. 
+    - 'Resources': Directory containing data files ('hawaii_measurements.csv','hawaii_stations.csv') 'hawaii.sqlite').
+    - 'Results': Directory containing images of the results 
+    - 'app.py': Main Flask application script.
+    - 'climate_starter.ipyn'`: Jupyter Notebook containing data analysis and exploration.
   
 ## Instructions
 1. Ensure the following have been installed:
@@ -57,8 +58,8 @@ Steps:
 - Matplotlib
 2. Clone the repository to your local device using git clone <https://github.com/jackthomas1430/sqlalchemy-challenge.git>
 3. Open 'climate_analysis.ipyn' and run to find data analysis results
-4. Open 'app.py' to run Flask application script
-    -to run the flask app use the following command python app.py
+4. Open 'app.py' and run Flask application script
+    -to run the flask app use the following command: python app.py
     
 ##Results 
 -Images of the results can be found in the 'Results' folder located in sqlalchemy-challenge repo. 
