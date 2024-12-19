@@ -1,4 +1,4 @@
-# Module 10 SQLAlchemy Challenge: Climate Analysis and Exploration
+# Climate Analysis and Exploration
 
 ## Overview
 For the module 10 challenge, we perform climate analysis and data exploration of a climate database using Python and SQLAlchemy. The analysis is divided into two main parts: using Jupyter Notebook to do data analysis and building a Flask API to return data in JSON format.
