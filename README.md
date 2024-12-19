@@ -1,77 +1,101 @@
 # Climate Analysis and Exploration
 
-## Overview
-For the module 10 challenge, we perform climate analysis and data exploration of a climate database using Python and SQLAlchemy. The analysis is divided into two main parts: using Jupyter Notebook to do data analysis and building a Flask API to return data in JSON format.
+## **Project Objective**
+This project aims to analyze historical climate data to uncover patterns and trends that can aid in weather prediction and regional planning. Additionally, it showcases the integration of data analysis with Flask APIs to make insights accessible via web endpoints.
 
-### Part 1: Data Analysis and Exploration
+---
 
-The data analysis and exploration are performed in the Jupyter Notebook climate_analysis.ipynb.
+## **Overview**
+The project is divided into two main parts:
 
-Steps:
+### **1. Data Analysis and Exploration**
+Using Python and SQLAlchemy, climate data from an SQLite database is analyzed to:
+- Understand precipitation trends.
+- Evaluate temperature observations from active weather stations.
+- Generate statistical insights about climate patterns.
 
-1. Database Connection:
-    - Use SQLAlchemy to connect to the SQLite database hawaii.sqlite.
-    - Reflect the database tables into classes.
-    - Create a session to query the database.
+### **2. Flask API Development**
+A Flask application is built to serve analyzed climate data through accessible JSON endpoints, allowing users to retrieve information about precipitation, temperature, and statistical summaries.
 
-2. Precipitation Analysis:
-    - Find the most recent date in the dataset.
-    - Query the last 12 months of precipitation data.
-    - Save the query results into a Pandas DataFrame and plot the data using Matplotlib.
-    - Calculate summary statistics data.
+---
 
-3. Station Analysis:
-    - Calculate the total number of stations.
-    - Identify the most active station 
-    - Query tobs data of the most active station for the last 12 months.
-    - Calculate the minimum, maximum, and avg temperatures for the most active station.
-    - Plot the tobs as a histogram.
-
-### Part 2: Building the Flask API
-#### Available Routes:
-    1.Homepage (/):
-        - Lists all available routes.
-    2. Precipitation Data (/api/v1.0/precipitation):
-        - Returns the last 12 months of precipitation data.
-    3. Stations Data (/api/v1.0/stations):
-        - Returns a list of all stations.
-    4. Temperature Observations (/api/v1.0/tobs):
-        - Returns the last 12 months of temperature observations for the most active station. 
-    5. Temperature Statistics (/api/v1.0/<start> and /api/v1.0/<start>/<end>):
-        - Returns the minimum, average, and maximum temperatures for a specified start or start-end range.
-
-## Files
-- 'sqlalchemy-challenge'(https://github.com/jackthomas1430/sqlalchemy-challenge.git) :The main repo for this challenge.
-- 'SurfUp': Directory containing all files needed for the challenge. 
-    - 'Resources': Directory containing data files ('hawaii_measurements.csv','hawaii_stations.csv') 'hawaii.sqlite').
-    - 'Results': Directory containing images of the results 
-    - 'app.py': Main Flask application script.
-    - 'climate_starter.ipyn'`: Jupyter Notebook containing data analysis and exploration.
-  
-## Instructions
-1. Ensure the following have been installed:
-- Python 
+## **Technologies Used**
+- Python (Pandas, SQLAlchemy, Flask, Matplotlib)
+- SQLite
 - Jupyter Notebook
-- Flask
-- SQLAlchemy
-- Pandas
-- Matplotlib
-2. Clone the repository to your local device using git clone <https://github.com/jackthomas1430/sqlalchemy-challenge.git>
-3. Open 'climate_analysis.ipyn' and run to find data analysis results
-4. Open 'app.py' and run Flask application script
-    -to run the flask app use the following command: python app.py
-    
-# Results 
-- Images of the results can be found in the 'Results' folder located in sqlalchemy-challenge repo. 
 
-## Acknowledgements
-    Xpert Learning Assistant was used to answer detailed questions, and assist in debugging.For more information about the Xpert Learning Assistant, visit [EdX Xpert Learning Assistant](https://www.edx.org/). 
-    
-## References
-1. Python Datetime Documentation- [Python Datetime Documentation](https://docs.python.org/3/library/datetime.html#datetime.date.strftime)
-2. Dunder (Magic) Methods in Python- [Dunder (Magic) Methods in Python](https://www.geeksforgeeks.org/dunder-magic-methods-python/)
-3. HTML Tags Reference- [HTML Tags Reference](https://www.w3schools.com/TAGs/)
-4. Python OOP Concepts- [Python OOP Concepts](https://www.geeksforgeeks.org/python-oops-concepts/)
-5. Difference Between filter and filter_by in SQLAlchemy- [Difference Between filter and filter_by in SQLAlchemy](https://stackoverflow.com/questions/2128505/difference-between-filter-and-filter-by-in-sqlalchemy)
-6. SQLAlchemy SQLite Dialect Documentation- [SQLAlchemy SQLite Dialect Documentation](https://docs.sqlalchemy.org/en/20/dialects/sqlite.html)
-7. Menne, M.J., I. Durre, R.S. Vose, B.E. Gleason, and T.G. Houston, 2012: An overview of the Global Historical Climatology Network-Daily Database. Journal of Atmospheric and Oceanic Technology, 29, 897-910, https://journals.ametsoc.org/view/journals/atot/29/7/jtech-d-11-00103_1.xmlLinks to an external site.
+---
+
+## **Repository Contents**
+- `app.py`: Main Flask application script containing API route definitions.
+- `climate_analysis.ipynb`: Jupyter Notebook with data analysis and visualization.
+- `Resources/`: Folder containing:
+  - `hawaii_measurements.csv`: Climate measurement data.
+  - `hawaii_stations.csv`: Station information.
+  - `hawaii.sqlite`: SQLite database used for analysis.
+- `Results/`: Folder with generated plots and visualizations.
+
+---
+
+## **Instructions**
+1. **Prerequisites:**
+   - Install Python and the following libraries:
+     - Flask
+     - SQLAlchemy
+     - Pandas
+     - Matplotlib
+
+2. **Clone the Repository:**
+   ```bash
+   git clone https://github.com/jackthomas1430/Climate_Analysis_Exploration.git
+   ```
+
+3. **Run the Jupyter Notebook:**
+   - Open `climate_analysis.ipynb` to explore data analysis and visualizations.
+
+4. **Run the Flask Application:**
+   ```bash
+   python app.py
+   ```
+   - Access the available routes through the local server.
+
+---
+
+## **API Routes**
+1. `/`: Homepage listing all available routes.
+2. `/api/v1.0/precipitation`: Returns the last 12 months of precipitation data.
+3. `/api/v1.0/stations`: Lists all weather stations.
+4. `/api/v1.0/tobs`: Provides temperature observations for the most active station over the last 12 months.
+5. `/api/v1.0/<start>`: Returns min, max, and avg temperatures from the start date.
+6. `/api/v1.0/<start>/<end>`: Returns min, max, and avg temperatures for a specified date range.
+
+---
+
+## **Results**
+### **Key Insights:**
+- **Precipitation Trends:**
+  - Identified seasonal variations in precipitation over the year.
+  - Plotted precipitation data to visualize trends.
+- **Station Analysis:**
+  - Highlighted the most active station based on data availability.
+  - Provided statistical summaries (min, max, and avg temperatures) for this station.
+- **Temperature Trends:**
+  - Visualized temperature observations for the most active station.
+
+### **Visualizations:**
+- Precipitation trends over the last year.
+- Histogram of temperature observations.
+
+---
+
+## **Business Relevance**
+This project demonstrates how data analysis and APIs can:
+- Enable informed decision-making in weather-sensitive industries.
+- Provide historical insights for agricultural planning and tourism management.
+- Serve as a foundation for predictive modeling and regional climate studies.
+
+---
+
+## **Acknowledgments and References**
+- Global Historical Climatology Network: [Link](https://journals.ametsoc.org/view/journals/atot/29/7/jtech-d-11-00103_1.xml)
+- Python and SQLAlchemy Documentation: [SQLAlchemy](https://docs.sqlalchemy.org/en/20/)
